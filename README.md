@@ -1,4 +1,11 @@
-# @yoursunny/asn1 fork of @root/asn1
+# @bicycle-codes/asn1 fork of @yoursunny/asn1
+
+![tests](https://github.com/bicycle-codes/asn1.js/actions/workflows/nodejs.yml/badge.svg)
+[![types](https://img.shields.io/npm/types/@bicycle-codes/asn1.js?style=flat-square)](README.md)
+[![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
+[![install size](https://packagephobia.com/badge?p=@bicycle-codes/asn1.js)](https://packagephobia.com/result?p=@bicycle-codes/asn1.js)
+[![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 
 Built by [The Root Company](https://therootcompany.com)
 for [Greenlock](https://greenlock.domains)
@@ -6,11 +13,6 @@ and [Keypairs.js](https://git.rootprojects.org/root/keypairs.js)
 
 Lightweight, Zero-Dependency ASN.1 encoder and decoder for Node.js and Browsers,
 in less than 300 lines of vanilla JavaScript
-
-| 1.6k gzipped
-| 4.2k minified
-| 8.4k pretty
-|
 
 -   [x] Zero External Dependencies
 -   [x] Universal Support

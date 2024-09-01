@@ -80,7 +80,7 @@ export const ASN1Parser = {
     }
 }
 
-interface ASN1Data {
+export interface ASN1Data {
     type;
     lengthSize:number;
     length;
