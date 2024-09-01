@@ -1,9 +1,11 @@
 'use strict'
 
 import ASN1 from '../src/index.js'
-import Enc from '../src/hexjs'
+import Enc from '@root/encoding'
+// import Enc from '../src/hex.js'
 // const Enc = require('@root/encoding')
-const PEM = require('@root/pem')
+// const PEM = require('@root/pem')
+import PEM from '@root/pem'
 
 // 1.2.840.10045.3.1.7
 // prime256v1 (ANSI X9.62 named elliptic curve)

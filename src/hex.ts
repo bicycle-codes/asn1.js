@@ -1,70 +1,92 @@
-'use strict'
+export const Enc = {
+    // to Binary String
+    bufToBin (buf):string {
+        let bin = ''
+        // cannot use .map() because Uint8Array would return only 0s
+        buf.forEach(function (ch) {
+            bin += String.fromCharCode(ch)
+        })
 
-const Enc = require('./bytes.js')
+        return bin
+    },
 
-// To Hex
+    hexToBuf (hex:string) {
+        const arr:number[] = []
+        hex.match(/.{2}/g)!.forEach((h) => {
+            arr.push(parseInt(h, 16))
+        })
 
-Enc.bufToHex = function (u8) {
-    const hex = []
-    let i, h
-    const len = u8.byteLength || u8.length
+        return typeof Uint8Array !== 'undefined' ? new Uint8Array(arr) : arr
+    },
 
-    for (i = 0; i < len; i += 1) {
-        h = u8[i].toString(16)
-        if (h.length !== 2) {
-            h = '0' + h
-        }
-        hex.push(h)
-    }
+    strToBin (str:string) {
+        // Note: TextEncoder might be faster (or it might be slower, I don't know),
+        // but it doesn't solve the double-utf8 problem and MS Edge still has
+        //   users without it
+        const escstr = encodeURIComponent(str)
 
-    return hex.join('').toLowerCase()
-}
+        // replace any uri escape sequence, such as %0A,
+        // with binary escape, such as 0x0A
+        const binstr = escstr.replace(/%([0-9A-F]{2})/g, function (_, p1) {
+            return String.fromCharCode(Number('0x' + p1))
+        })
 
-Enc.numToHex = function (d) {
-    d = d.toString(16) // .padStart(2, '0');
-    if (d.length % 2) {
-        return '0' + d
-    }
-    return d
-}
+        return binstr
+    },
 
-Enc.strToHex = function (str) {
-    return Enc._binToHex(Enc.strToBin(str))
-}
+    binToBuf  (bin) {
+        const arr = bin.split('').map(function (ch) {
+            return ch.charCodeAt(0)
+        })
 
-Enc._binToHex = function (bin) {
-    return bin
-        .split('')
-        .map(function (ch) {
-            let h = ch.charCodeAt(0).toString(16)
+        return typeof Uint8Array !== 'undefined' ? new Uint8Array(arr) : arr
+    },
+
+    strToBuf (str:string) {
+        return Enc.binToBuf(Enc.strToBin(str))
+    },
+
+    // to Unicode String
+    binToStr (binstr:string) {
+        const escstr = binstr.replace(/(.)/g, function (m, p) {
+            let code = p
+                .charCodeAt(0)
+                .toString(16)
+                .toUpperCase()
+            if (code.length < 2) {
+                code = '0' + code
+            }
+            return '%' + code
+        })
+
+        return decodeURIComponent(escstr)
+    },
+
+    bufToStr (buf) {
+        return Enc.binToStr(Enc.bufToBin(buf))
+    },
+
+    bufToHex (u8:Uint8Array) {
+        const hex:string[] = []
+        let i, h:string
+        const len = u8.byteLength || u8.length
+
+        for (i = 0; i < len; i += 1) {
+            h = u8[i].toString(16)
             if (h.length !== 2) {
                 h = '0' + h
             }
-            return h
-        })
-        .join('')
+            hex.push(h)
+        }
+
+        return hex.join('').toLowerCase()
+    },
+
+    numToHex (_d:number):string {
+        const d = _d.toString(16)
+        if (d.length % 2) {
+            return '0' + d
+        }
+        return d
+    }
 }
-
-// From Hex
-
-Enc.hexToBuf = function (hex) {
-    const arr = []
-    hex.match(/.{2}/g).forEach(function (h) {
-        arr.push(parseInt(h, 16))
-    })
-    return typeof Uint8Array !== 'undefined' ? new Uint8Array(arr) : arr
-}
-
-Enc.hexToStr = function (hex) {
-    return Enc.binToStr(_hexToBin(hex))
-}
-
-function _hexToBin (hex) {
-    return hex.replace(/([0-9A-F]{2})/gi, function (_, p1) {
-        return String.fromCharCode('0x' + p1)
-    })
-}
-
-Enc._hexToBin = _hexToBin
-
-module.exports = Enc

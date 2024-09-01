@@ -1,11 +1,12 @@
-'use strict'
+import { ASN1Packer } from './packer'
+import { ASN1Parser } from './parser'
 
-const ASN1 = module.exports
-const packer = require('./packer.js')
-const parser = require('./parser.js')
-Object.keys(parser).forEach(function (key) {
-    ASN1[key] = parser[key]
-})
-Object.keys(packer).forEach(function (key) {
-    ASN1[key] = packer[key]
-})
+export * from './packer'
+export * from './parser'
+
+export const ASN1 = {
+    ...ASN1Packer,
+    ...ASN1Parser
+}
+
+export default ASN1
