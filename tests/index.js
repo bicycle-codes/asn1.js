@@ -2,9 +2,6 @@
 
 import ASN1 from '../src/index.js'
 import Enc from '@root/encoding'
-// import Enc from '../src/hex.js'
-// const Enc = require('@root/encoding')
-// const PEM = require('@root/pem')
 import PEM from '@root/pem'
 
 // 1.2.840.10045.3.1.7
