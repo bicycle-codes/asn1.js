@@ -35,6 +35,9 @@ If you're **most people**, you're actually looking for one or more of these:
 Want to [contribute](#contributions)?
 Need [commercial support](#commercial-support)?
 
+# fork
+This is a fork of [yoursunny/asn1.js](https://github.com/yoursunny/asn1.js); just re-packaging for easier consumption.
+
 # Usage
 
 ASN.1 DER consists values which have

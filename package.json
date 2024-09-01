@@ -1,5 +1,5 @@
 {
-	"name": "@yoursunny/asn1",
+	"name": "@bicycle-codes/asn1",
 	"version": "0.0.20200718",
 	"description": "VanillaJS, Lightweight, Zero-Dependency, ASN.1 encoder and decoder.",
 	"main": "index.js",
@@ -8,13 +8,51 @@
 		"*.d.ts",
 		"dist"
 	],
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./*": {
+			"import": [
+				"./dist/*.js",
+				"./dist/*"
+			],
+			"require": [
+				"./dist/*.cjs",
+				"./dist/*"
+			]
+		}
+	},
 	"scripts": {
-		"build": "bash build.sh",
-		"test": "node tests"
+		"//build": "bash build.sh",
+		"lint": "eslint \"./**/*.{ts,js}\"",
+		"test": "node tests",
+		"build-cjs": "esbuild src/*.ts --format=cjs --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.cjs --sourcemap",
+		"build-cjs:min": "esbuild src/*.ts --format=cjs --minify --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --out-extension:.js=.min.cjs --sourcemap",
+		"build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+		"build-esm:min": "esbuild ./src/*.ts --format=esm --keep-names --bundle --tsconfig=tsconfig.build.json --minify --out-extension:.js=.min.js --outdir=./dist --sourcemap",
+		"build-example": "mkdir -p ./public && rm -rf ./public/* && VITE_DEBUG_MODE=staging vite --mode staging --base=\"/repo-name\" build",
+		"build-docs": "typedoc ./src/index.ts",
+		"build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-cjs && npm run build-esm && npm run build-esm:min && npm run build-cjs:min"
+	},
+	"dependencies": {
+		"@root/encoding": "^1.0.1",
+		"@types/root__asn1": "^1.0.0"
+	},
+	"devDependencies": {
+		"@root/pem": "^1.0.4",
+		"@typescript-eslint/eslint-plugin": "^8.3.0",
+		"@typescript-eslint/parser": "^8.3.0",
+		"esbuild": "^0.23.1",
+		"eslint": "^8.57.0",
+		"eslint-config-standard": "^17.1.0",
+		"typescript": "^5.5.4",
+		"uglify-js": "^3.10.0"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/yoursunny/asn1.js.git"
+		"url": "https://github.com/bicycle-codes/asn1.js.git"
 	},
 	"keywords": [
 		"ASN.1",
@@ -23,13 +61,5 @@
 		"PEM"
 	],
 	"author": "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)",
-	"license": "MPL-2.0",
-	"devDependencies": {
-		"@root/pem": "^1.0.4",
-		"uglify-js": "^3.10.0"
-	},
-	"dependencies": {
-		"@root/encoding": "^1.0.1",
-		"@types/root__asn1": "^1.0.0"
-	}
+	"license": "MPL-2.0"
 }
