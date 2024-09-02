@@ -30,7 +30,7 @@ export const ASN1Parser = {
 
     // Although I've only seen 9 max in https certificates themselves,
     // each domain list could have up to 100
-    parseVerbose (buf, opts) {
+    parseVerbose (buf, opts = {}) {
         const asn1 = parseAsn1(buf, [], opts)
         const len = buf.byteLength || buf.length
         if (len !== 2 + asn1.lengthSize + asn1.length) {
