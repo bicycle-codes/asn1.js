@@ -1,8 +1,8 @@
-import { ASN1Packer } from './packer'
-import { ASN1Parser } from './parser'
+import { ASN1Packer } from './packer.js'
+import { ASN1Parser } from './parser.js'
 
-export * from './packer'
-export * from './parser'
+export * from './packer.js'
+export * from './parser.js'
 
 export const ASN1 = {
     ...ASN1Packer,

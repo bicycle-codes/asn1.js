@@ -1,4 +1,4 @@
-import { Enc } from './hex'
+import { Enc } from './hex.js'
 
 //
 // Packer
