@@ -10,6 +10,11 @@ Built by [The Root Company](https://therootcompany.com)
 for [Greenlock](https://greenlock.domains)
 and [Keypairs.js](https://git.rootprojects.org/root/keypairs.js)
 
+
+# fork
+This is a fork of [yoursunny/asn1.js](https://github.com/yoursunny/asn1.js); just re-packaging for easier consumption.
+
+
 Lightweight, Zero-Dependency ASN.1 encoder and decoder for Node.js and Browsers,
 in less than 300 lines of vanilla JavaScript
 
@@ -35,9 +40,6 @@ If you're **most people**, you're actually looking for one or more of these:
 
 Want to [contribute](#contributions)?
 Need [commercial support](#commercial-support)?
-
-# fork
-This is a fork of [yoursunny/asn1.js](https://github.com/yoursunny/asn1.js); just re-packaging for easier consumption.
 
 # Usage
 
