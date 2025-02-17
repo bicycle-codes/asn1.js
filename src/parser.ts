@@ -5,6 +5,10 @@
 
 import { Enc } from './hex.js'
 
+type ParserOpts = {
+    json?:boolean
+}
+
 //
 // Parser
 //
@@ -30,7 +34,7 @@ export const ASN1Parser = {
 
     // Although I've only seen 9 max in https certificates themselves,
     // each domain list could have up to 100
-    parseVerbose (buf, opts = {}) {
+    parseVerbose (buf:Uint8Array, opts:ParserOpts = {}) {
         const asn1 = parseAsn1(buf, [], opts)
         const len = buf.byteLength || buf.length
         if (len !== 2 + asn1.lengthSize + asn1.length) {
@@ -38,6 +42,7 @@ export const ASN1Parser = {
                 'Length of buffer does not match length of ASN.1 sequence.'
             )
         }
+
         return asn1
     },
 
@@ -83,17 +88,23 @@ export const ASN1Parser = {
 export interface ASN1Data {
     type;
     lengthSize:number;
-    length;
+    length:number;
     children?;
     value?
 }
 
-function parseAsn1 (buf, depth, eager?, opts:{ json?:boolean } = {}) {
+function parseAsn1 (
+    buf:Uint8Array,
+    depth,
+    eager?,
+    opts:ParserOpts = {}
+):ASN1Data {
     if (depth.length >= ASN1Parser.EDEEPN) {
         throw new Error(ASN1Parser.EDEEP)
     }
 
-    let index = 2 // we know, at minimum, data starts after type (0) and lengthSize (1)
+    // we know, at minimum, data starts after type (0) and lengthSize (1)
+    let index = 2
     const asn1:ASN1Data = { type: buf[0], lengthSize: 0, length: buf[1] }
     let child
     let iters = 0
