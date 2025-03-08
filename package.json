@@ -1,5 +1,5 @@
 {
-	"name": "@bicycle-codes/asn1",
+	"name": "@substrate-system/asn1",
 	"type": "module",
 	"version": "0.0.7",
 	"description": "VanillaJS, Lightweight, Zero-Dependency, ASN.1 encoder and decoder.",
