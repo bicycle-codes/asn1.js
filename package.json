@@ -1,7 +1,7 @@
 {
 	"name": "@substrate-system/asn1",
 	"type": "module",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "VanillaJS, Lightweight, Zero-Dependency, ASN.1 encoder and decoder.",
 	"main": "index.js",
 	"files": [
