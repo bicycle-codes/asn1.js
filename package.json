@@ -51,7 +51,7 @@
 		"@root/pem": "^1.0.4",
 		"@typescript-eslint/eslint-plugin": "^8.3.0",
 		"@typescript-eslint/parser": "^8.3.0",
-		"esbuild": "^0.23.1",
+		"esbuild": "^0.25.0",
 		"eslint": "^8.57.0",
 		"eslint-config-standard": "^17.1.0",
 		"typescript": "^5.5.4",
@@ -59,7 +59,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/bicycle-codes/asn1.js.git"
+		"url": "https://github.com/substrate-system/asn1.js.git"
 	},
 	"keywords": [
 		"ASN.1",
