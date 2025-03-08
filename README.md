@@ -1,9 +1,9 @@
-# @bicycle-codes/asn1 fork of @yoursunny/asn1
+# @substrate-system/asn1 fork of @yoursunny/asn1
 
-[![types](https://img.shields.io/npm/types/@bicycle-codes/asn1?style=flat-square)](README.md)
+[![types](https://img.shields.io/npm/types/@substrate-system/asn1?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
-[![install size](https://packagephobia.com/badge?p=@bicycle-codes/asn1)](https://packagephobia.com/result?p=@bicycle-codes/asn1.js)
+[![install size](https://packagephobia.com/badge?p=@substrate-system/asn1)](https://packagephobia.com/result?p=@substrate-system/asn1.js)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 
 Built by [The Root Company](https://therootcompany.com)
@@ -195,34 +195,34 @@ will automatically choose the correct code for your environment.
 
 ## Node (and Webpack)
 
-```js
-npm install -g @root/asn1
+```sh
+npm i -S @substrate-system/asn1
 ```
 
 ```js
-var asn1 = require('@root/asn1');
+var asn1 = require('@substrate-system/asn1');
 ```
 
 ```js
 // just the packer
-var asn1 = require('@root/asn1/packer');
+var asn1 = require('@substrate-system/asn1/packer');
 
 // just the parser
-var asn1 = require('@root/asn1/parser');
+var asn1 = require('@substrate-system/asn1/parser');
 ```
 
 ## Browsers (Vanilla JS)
 
 ```html
-<script src="https://unpkg.com/@root/asn1/dist/asn1.all.js"></script>
+<script src="https://unpkg.com/@substrate-system/asn1/dist/asn1.all.js"></script>
 ```
 
 ```html
-<script src="https://unpkg.com/@root/asn1/dist/asn1.all.min.js"></script>
+<script src="https://unpkg.com/@substrate-system/asn1/dist/asn1.all.min.js"></script>
 ```
 
 ```js
-var ASN1 = window.ASN1;
+const ASN1 = window.ASN1;
 ```
 
 # Examples
@@ -230,9 +230,9 @@ var ASN1 = window.ASN1;
 ## Decoding DER to JSON-ASN.1
 
 ```js
-var PEM = require('@root/pem/packer');
-var Enc = require('@root/encoding');
-var ASN1 = require('@root/asn1/parser');
+var PEM = require('@substrate-system/pem/packer');
+var Enc = require('@substrate-system/encoding');
+var ASN1 = require('@substrate-system/asn1/parser');
 ```
 
 ```js
