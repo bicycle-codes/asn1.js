@@ -11,6 +11,17 @@ for [Greenlock](https://greenlock.domains)
 and [Keypairs.js](https://git.rootprojects.org/root/keypairs.js)
 
 
+<details><summary><h2>Contents</h2></summary>
+<!-- toc -->
+</details>
+
+
+## Install
+
+```sh
+npm i -S @substrate-system/asn1
+```
+
 # fork
 This is a fork of [yoursunny/asn1.js](https://github.com/yoursunny/asn1.js); just re-packaging for easier consumption.
 
